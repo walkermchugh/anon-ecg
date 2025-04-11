@@ -36,6 +36,7 @@ Run the script like this:
 The script takes two arguments:
 1. `<input_directory>` where `input` `.xml' ECG files are located
 2. `<output_directory>` where deidentified `output` `.xml` ECG files will be written with a `deid_` prefix
+
 Here is an example:
 ```bash
 ./anon-ecg.sh ~/Desktop/ecg_files ~/Desktop/ecg_files/output
