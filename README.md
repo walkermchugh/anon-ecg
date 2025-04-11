@@ -19,12 +19,32 @@ If path is returned (e.g. `/usr/local/bin/xmlstarlet`) then `xmlstarlet` is inst
 ```bash
 brew install xmlstarlet
 ```
-#### 4. Download and install anon-ecg
+#### 4. Download `anon-ecg.sh` and make executable 
+Download the script with `curl`:
+```bash
+curl -o anon-ecg.sh https://raw.githubusercontent.com/walkermchugh/anon-ecg/main/anon-ecg.sh
+```
+Then make it executable:
+```bash
+chmod +x anon-ecg.sh
+```
+### 5. Run the script
+Run the script like this:
+```bash
+./anon-ecg.sh <input_directory> <output_directory>
+```
+The script takes two arguments:
+1. `<input_directory>` where `input` `.xml' ECG files are located
+2. `<output_directory>` where deidentified `output` `.xml` ECG files will be written with a `deid_` prefix
+Here is an example:
+```bash
+./anon-ecg.sh ~/Desktop/ecg_files ~/Desktop/ecg_files/output
+```
 
 ## File Organization
-Move .xml files into parent directory (e.g. `ECG_files`
+1. Move .xml files into parent directory, this will be the `<input_directory>`.
+2. Create an output director (e.g. `~/Desktop/ecg_files/output`), this will be the `<output_directory>`.
 
 
-
-## ‼️ Disclaimer ‼️
+## ‼️ Legal ‼️
 **THIS SCRIPT IS PROVIDED AS-IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE AUTHOR IS NOT RESPONSIBLE FOR ANY DAMAGES OR DATA LOSS RESULTING FROM USE OR MISUSE OF THIS SOFTWARE. THIS SCRIPT IS NOT INTENDED FOR CLINICAL USE. USERS ARE RESPONSIBLE FOR VERIFYING THAT ALL SENSITIVE INFORMATION IS PROPERLY REMOVED BEFORE SHARING DE-IDENTIFIED DATA.**
