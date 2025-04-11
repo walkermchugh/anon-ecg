@@ -15,10 +15,12 @@ which xmlstarlet
 ```
 If path is returned (e.g. `/usr/local/bin/xmlstarlet`) then `xmlstarlet` is installed, **skip to step 4**. If it returns nothing (blank line), then `xmlstarlet` is not installed. 
 #### 3. Install `xmlstarlet` (optional)
-`xmlstarlet` can be installed using [Install Homebrew (if needed)](https://brew.sh/) by running: 
+`xmlstarlet` can be installed by running:  
 ```bash
 brew install xmlstarlet
 ```
+[Install Homebrew (if needed)](https://brew.sh/)
+
 #### 4. Download `anon-ecg.sh` and make executable 
 Download the script with `curl`:
 ```bash
