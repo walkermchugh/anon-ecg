@@ -6,14 +6,23 @@ deidentify_file() {
   local outdir="$2"
   local base=$(basename "$infile")
   local outfile="$outdir/deid_$base"
+  local tmpfile="${outfile}.tmp"
 
   echo "De-identifying: $infile"
   echo "Saving to: $outfile"
 
+  # First remove specific XML attributes using xmlstarlet
   xmlstarlet ed \
     -u "//*[local-name()='id' and @extension]" -v "" \
     -u "//*[local-name()='birthTime']/@value" -v "" \
-    "$infile" > "$outfile"
+    "$infile" > "$tmpfile"
+
+  # Further remove explicit PHI-containing XML tags using sed
+  sed '/<PatientID>/d;/<PatientLastName>/d;/<PatientFirstName>/d;/<HISAccountNumber>/d;/<ExtraADTData1>/d' \
+    "$tmpfile" > "$outfile"
+
+  # Clean up temporary file
+  rm -f "$tmpfile"
 }
 
 # Function to loop through all XML files in the input directory
